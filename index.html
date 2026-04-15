@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SCIIMPACT: A multi-dimensional, multi-field benchmark for scientific impact prediction.">
+  <title>SCIIMPACT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script defer src="./static/js/index.js"></script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="site-brand" href="#top">SCIIMPACT</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#abstract">Abstract</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__backdrop"></div>
+      <div class="hero__grid">
+        <div class="hero__copy reveal">
+          <p class="eyebrow">Multi-dimensional scientific impact prediction</p>
+          <h1>SCIIMPACT: A Multi-Dimensional, Multi-Field Benchmark for Scientific Impact Prediction</h1>
+          <p class="hero__summary">
+            SCIIMPACT turns scientific impact prediction into a benchmark that spans 7 impact dimensions,
+            19 scientific fields, and 215,928 contrastive pairs. The benchmark shows that task-specific
+            supervised fine-tuning lets compact open-weight models outperform much larger baselines.
+          </p>
+
+          <div class="author-list">
+            <span>Hangxiao Zhu<sup>1</sup></span>
+            <span>Yuyu Zhang<sup>2</sup></span>
+            <span>Ping Nie<sup>3</sup></span>
+            <span>Yu Zhang<sup>1</sup></span>
+          </div>
+          <p class="affiliations">
+            <span><sup>1</sup>Texas A&amp;M University</span>
+            <span><sup>2</sup>Verdent AI</span>
+            <span><sup>3</sup>University of Waterloo</span>
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="https://gitlab.com/user-paper-review/SciImpact.git" target="_blank" rel="noopener noreferrer">Project Code</a>
+            <a class="button" href="#bibtex">BibTeX</a>
+          </div>
+
+          <dl class="hero__stats">
+            <div>
+              <dt>Pairs</dt>
+              <dd>215,928</dd>
+            </div>
+            <div>
+              <dt>Dimensions</dt>
+              <dd>7</dd>
+            </div>
+            <div>
+              <dt>Fields</dt>
+              <dd>19</dd>
+            </div>
+            <div>
+              <dt>LLMs Evaluated</dt>
+              <dd>11</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="hero__figure reveal">
+          <img src="./static/images/radar_by_metric.png" alt="Performance radar across the seven SCIIMPACT dimensions.">
+          <figcaption>
+            SFT-Qwen3-4B reaches <strong>0.685 average accuracy</strong> across impact dimensions and leads on
+            Citation, Award, Patent, Media, Dataset, and Model.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--intro" id="abstract">
+      <div class="section__header reveal">
+        <p class="section-label">Abstract</p>
+        <h2>Beyond citation counts</h2>
+      </div>
+      <div class="intro-grid">
+        <div class="intro-grid__text reveal">
+          <p>
+            The paper argues that scientific impact cannot be reduced to citations alone. SCIIMPACT broadens
+            evaluation to include <strong>Award</strong>, <strong>Patent</strong>, <strong>Media</strong>,
+            <strong>Code</strong>, <strong>Dataset</strong>, and <strong>Model</strong> signals, while still
+            preserving the classical <strong>Citation</strong> setting.
+          </p>
+          <p>
+            Each benchmark instance is a contrastive pair from the same field, asking models to decide which
+            artifact has higher impact under a specific dimension. This gives a clean way to compare models
+            across short-term and long-term impact settings without collapsing everything into one noisy score.
+          </p>
+        </div>
+        <div class="highlight-list reveal">
+          <article>
+            <h3>Benchmark scope</h3>
+            <p>19 fields from computer science and medicine to history, sociology, and philosophy.</p>
+          </article>
+          <article>
+            <h3>Input types</h3>
+            <p>Paper title plus abstract, GitHub README files, Hugging Face dataset cards, and model cards.</p>
+          </article>
+          <article>
+            <h3>Main result</h3>
+            <p>Supervised fine-tuning turns a 4B model into the strongest average system across dimensions and fields.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benchmark">
+      <div class="section__header reveal">
+        <p class="section-label">Benchmark</p>
+        <h2>Three-stage curation pipeline</h2>
+      </div>
+
+      <div class="split-layout split-layout--pipeline">
+        <figure class="media-frame reveal">
+          <img src="./static/images/SciImpact_pipeline.png" alt="Three-stage pipeline for SCIIMPACT benchmark construction.">
+          <figcaption>
+            SCIIMPACT combines candidate retrieval, impact labeling plus pair generation, and filtering plus
+            quality control into one reproducible pipeline.
+          </figcaption>
+        </figure>
+
+        <div class="pipeline-notes reveal">
+          <div class="note-block">
+            <h3>Stage 1</h3>
+            <p>Collect candidate artifacts and metadata from MAPLE, OpenAlex, SciSciNet, Papers with Code, GitHub, and Hugging Face.</p>
+          </div>
+          <div class="note-block">
+            <h3>Stage 2</h3>
+            <p>Compute dimension-specific impact signals and build contrastive pairs under matched field and time constraints.</p>
+          </div>
+          <div class="note-block">
+            <h3>Stage 3</h3>
+            <p>Recover missing text, filter invalid items, remove duplicates, and balance train, validation, and test coverage.</p>
+          </div>
+          <div class="dimension-strip">
+            <span>Citation</span>
+            <span>Award</span>
+            <span>Patent</span>
+            <span>Media</span>
+            <span>Code</span>
+            <span>Dataset</span>
+            <span>Model</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-panel reveal">
+        <h3>Field coverage</h3>
+        <p>
+          SCIIMPACT spans art, biology, business, chemistry, computer science, economics, engineering,
+          environmental science, geography, geology, history, materials science, mathematics, medicine,
+          philosophy, physics, political science, psychology, and sociology.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--results" id="results">
+      <div class="section__header reveal">
+        <p class="section-label">Results</p>
+        <h2>Fine-tuning changes the shape of performance</h2>
+      </div>
+
+      <div class="results-grid">
+        <figure class="media-frame reveal">
+          <img src="./static/images/radar_by_metric.png" alt="Radar chart comparing o4-mini, Qwen3-4B, and SFT-Qwen3-4B across SCIIMPACT dimensions.">
+          <figcaption>
+            Across dimensions, SFT-Qwen3-4B is strongest on average, with especially large gains on
+            <strong>Award (0.837)</strong>, <strong>Media (0.720)</strong>, and
+            <strong>Model (0.644)</strong>.
+          </figcaption>
+        </figure>
+
+        <figure class="media-frame reveal">
+          <img src="./static/images/radar_by_field.png" alt="Radar chart comparing o4-mini, Qwen3-4B, and SFT-Qwen3-4B across scientific fields.">
+          <figcaption>
+            Across fields, SFT-Qwen3-4B reaches <strong>0.720 average accuracy</strong>, peaks at
+            <strong>0.768 on Chemistry</strong>, and stays strong outside the usual computer science and biomedicine focus.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="takeaways reveal">
+        <article>
+          <h3>Smaller can be stronger</h3>
+          <p>After supervised fine-tuning on SCIIMPACT, a 4B model can match or surpass larger open-weight systems and even strong closed-source baselines.</p>
+        </article>
+        <article>
+          <h3>Award is easiest, public impact is harder</h3>
+          <p>Models perform best on award-related judgments, while dimensions such as Patent and Media remain harder because they depend on broader external factors.</p>
+        </article>
+        <article>
+          <h3>Scientific impact is heterogeneous</h3>
+          <p>The benchmark exposes where textual signals are sufficient and where models likely need additional context beyond the artifact text itself.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--profile">
+      <div class="section__header reveal">
+        <p class="section-label">Data profile</p>
+        <h2>Artifact length varies sharply by dimension</h2>
+      </div>
+
+      <div class="split-layout">
+        <div class="profile-copy reveal">
+          <p>
+            Abstract-based tasks such as Citation, Award, Patent, and Media stay relatively compact. In contrast,
+            repository README files and Hugging Face cards are much longer and more variable, which makes the
+            benchmark meaningfully heterogeneous even before modeling begins.
+          </p>
+          <p>
+            The paper standardizes evaluation by truncating inputs when needed, so models must learn to extract
+            impact-relevant cues under a controlled prompt budget.
+          </p>
+        </div>
+
+        <figure class="media-frame reveal">
+          <img src="./static/images/text_length_percentiles.png" alt="Text length percentile plot across SCIIMPACT dimensions.">
+          <figcaption>
+            Code artifacts are the longest and most variable; paper-abstract dimensions are shorter and more tightly clustered.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--bibtex" id="bibtex">
+      <div class="section__header reveal">
+        <p class="section-label">Citation</p>
+        <h2>BibTeX</h2>
+      </div>
+
+      <div class="bibtex-wrap reveal">
+        <pre><code>@misc{zhu2026sciimpact,
+  title={SCIIMPACT: A Multi-Dimensional, Multi-Field Benchmark for Scientific Impact Prediction},
+  author={Zhu, Hangxiao and Zhang, Yuyu and Nie, Ping and Zhang, Yu},
+  year={2026},
+  url={https://gitlab.com/user-paper-review/SciImpact.git}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Website adapted for SCIIMPACT with a paper-homepage layout inspired by the provided SciMult template.</p>
+  </footer>
+</body>
+</html>
