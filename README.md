@@ -1,12 +1,12 @@
-# SCIIMPACT
+# SciImpact
 
-This repository hosts the project homepage for **SCIIMPACT: A Multi-Dimensional, Multi-Field Benchmark for Scientific Impact Prediction**.
+This repository hosts the project homepage for **SciImpact: A Multi-Dimensional, Multi-Field Benchmark for Scientific Impact Prediction**.
 
-SCIIMPACT studies scientific impact prediction beyond citation counts alone. The benchmark covers **7 impact dimensions**, **19 scientific fields**, and **215,928 contrastive pairs**, enabling systematic evaluation of whether models can identify the more impactful artifact under different definitions of impact.
+SciImpact studies scientific impact prediction beyond citation counts alone. The benchmark covers **7 impact dimensions**, **19 scientific fields**, and **215,928 contrastive pairs**, enabling systematic evaluation of whether models can identify the more impactful artifact under different definitions of impact.
 
 ## Project Overview
 
-SCIIMPACT expands scientific impact prediction to include:
+SciImpact expands scientific impact prediction to include:
 
 - Citation
 - Award
