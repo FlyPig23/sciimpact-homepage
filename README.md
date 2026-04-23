@@ -41,3 +41,17 @@ GitHub Pages site:
 
 - This repository is for the **project homepage**, not the full benchmark release.
 - The local paper PDF is not included in this repository.
+
+## Citation
+
+```bibtex
+@misc{zhu2026sciimpactmultidimensionalmultifieldbenchmark,
+  title={SciImpact: A Multi-Dimensional, Multi-Field Benchmark for Scientific Impact Prediction},
+  author={Hangxiao Zhu and Yuyu Zhang and Ping Nie and Yu Zhang},
+  year={2026},
+  eprint={2604.17141},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2604.17141}
+}
+```
