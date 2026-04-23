@@ -40,7 +40,6 @@ GitHub Pages site:
 ## Notes
 
 - This repository is for the **project homepage**, not the full benchmark release.
-- The local paper PDF is not included in this repository.
 
 ## Citation
 
